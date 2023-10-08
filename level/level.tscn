@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://deo0fre1shvr"]
 
+[ext_resource type="Script" path="res://level/level.gd" id="1_1xsj8"]
 [ext_resource type="Texture2D" uid="uid://q1350dyritw0" path="res://assets/scene/colored_castle.png" id="1_5qurp"]
 [ext_resource type="PackedScene" uid="uid://v7on254kx8ai" path="res://cup/cup.tscn" id="2_hdbm7"]
-[ext_resource type="PackedScene" uid="uid://d10s42pv2jr8t" path="res://animal/animal.tscn" id="3_rmry8"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_1xsj8")
 
 [node name="ColoredCastle" type="Sprite2D" parent="."]
 position = Vector2(516, 266)
@@ -12,7 +13,19 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_5qurp")
 
 [node name="Cup" parent="." instance=ExtResource("2_hdbm7")]
-position = Vector2(505, 319)
+position = Vector2(208, 482)
 
-[node name="Animal" parent="." instance=ExtResource("3_rmry8")]
-position = Vector2(494, 119)
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 424.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "asdfsadf
+fdsafdsa
+asdfasdfsdf
+fdsafdsfsafdsasd
+sdfdfdfdfasdfasd"
+
+[node name="AnimalStart" type="Marker2D" parent="."]
+position = Vector2(150, 330)
