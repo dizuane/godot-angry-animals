@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d10s42pv2jr8t"]
+[gd_scene load_steps=8 format=3 uid="uid://d10s42pv2jr8t"]
 
 [ext_resource type="Script" path="res://animal/animal.gd" id="1_skyme"]
 [ext_resource type="Texture2D" uid="uid://desnf1syedhyx" path="res://assets/player/parrot.png" id="1_t4fej"]
+[ext_resource type="AudioStream" uid="uid://co68r8508jkit" path="res://assets/audio/stretch2.ogg" id="3_7siyf"]
+[ext_resource type="AudioStream" uid="uid://dy48tr0284g8o" path="res://assets/audio/catapult.ogg" id="4_gx7hj"]
+[ext_resource type="AudioStream" uid="uid://b6kg3oithc803" path="res://assets/audio/kick_wood.ogg" id="5_oxupj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qj56g"]
 bounce = 0.2
@@ -10,7 +13,11 @@ bounce = 0.2
 radius = 19.0263
 
 [node name="Animal" type="RigidBody2D"]
+input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_qj56g")
+max_contacts_reported = 1
+contact_monitor = true
+freeze = true
 script = ExtResource("1_skyme")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,4 +31,14 @@ shape = SubResource("CircleShape2D_laf01")
 position = Vector2(-4.76837e-07, 4.76837e-07)
 scale = Vector2(1.9, 1.9)
 
+[node name="StretchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7siyf")
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gx7hj")
+
+[node name="CollisionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oxupj")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
