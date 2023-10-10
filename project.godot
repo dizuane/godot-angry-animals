@@ -11,12 +11,14 @@ config_version=5
 [application]
 
 config/name="angry-animals"
+run/main_scene="res://main/main.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 
 [autoload]
 
 SignalManager="*res://singletons/signal_manager.gd"
 GameManager="*res://singletons/game_manager.gd"
+ScoreManager="*res://singletons/score_manager.gd"
 
 [display]
 
